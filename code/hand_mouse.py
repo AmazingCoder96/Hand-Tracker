@@ -60,9 +60,7 @@ with HandLandmarker.create_from_options(options) as landmarker:
         zone_color = (0, 255, 0) if left_was_in_center else (255, 0, 0)
         cv2.rectangle(frame, (int(w * zone_x_min), int(h * zone_y_min)),
                       (int(w * zone_x_max), int(h * zone_y_max)), zone_color, 2)
-        cv2.putText(frame, "TOGGLE ZONE", (int(w * zone_x_min) + 5, int(h * zone_y_min) - 10),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, zone_color, 1)
-
+        
         if result.hand_landmarks:
             for i, landmarks in enumerate(result.hand_landmarks):
                 hand_label = result.handedness[i][0].category_name
